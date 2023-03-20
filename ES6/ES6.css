@@ -1,0 +1,126 @@
+:root {
+    --background-one: (rgb(230, 223, 222));
+    --background-two: (rgb(148, 9, 72));
+}   
+html {
+    box-sizing: border-box;
+
+}
+body {
+    margin: 0;
+    background-color: #6b2b4b;
+}
+.main {
+    margin: auto;
+    margin-top: 35px;
+    display: flex;
+    max-width: 1300px;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    min-width: calc(100vw / 2);
+    background-color: #bb7b9b;
+    border-radius: 35px;
+    border: 20px #cb8bab solid;
+}
+
+.greeting-wrapper {
+    position: relative;
+    width: 70%;
+    min-width: 500px;
+    max-width: 900px;
+    font-size: x-large;
+    padding: 0px 20px 30px 20px;
+    margin: 30px auto 20px;
+    background-color: #ab6b8b;
+    border: 1px black solid;
+    text-align: center;
+}
+
+.greeting-wrapper:hover {
+    transition: 0.5s;
+    background-color: #9b5b7b;
+}
+
+.test-class {
+    background-color: black;
+    color:rgb(156, 45, 216);
+}
+
+.code-snippet {
+    position: relative;
+    font-size: 20px;
+    text-align: left;
+    padding-left: 25px;
+    width: 80%;
+    height: 80%;
+    background-color: rgb(62, 32, 32);
+    color:rgb(216, 183, 178);
+    min-width: 300px;
+    max-width: 1500px;
+    margin: 30px auto 20px;
+}
+
+.no-color-link {
+    color: inherit;
+}
+
+.colored-link {
+    color:rgb(180, 176, 176);
+}
+.related-subject {
+    opacity: 0.4;
+}
+
+pre, code {
+    color: orange;
+    white-space: pre-line;
+    text-align: start;
+}
+
+pre {
+    background-color: rgba(59, 42, 39, 0.627);
+    border-radius: 4px;
+    padding: 5px 0px 4px 110px;
+    margin: 0px 40px 0px 40px;
+}
+pre > code > i {
+    white-space: pre;
+    font-style: italic;
+}
+
+/*       Word highlights >>>>      */
+.g {
+    color: black;
+    font-size: 20px;
+    font-family: 'Source Code Pro', monospace;
+    padding: 0px 4px 1px 4px;
+    border-radius: 2px;
+    background-color: rgb(156, 45, 216);
+}
+
+.code {
+    padding: 0px 4px 3px 4px;
+    color: orange;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 20px;
+    border-radius: 3px;
+    background-color: rgba(59, 42, 39, 0.627)
+}
+
+/*       <<<< Word highlights       */
+
+.franco {
+    font-family: 'Source Code Pro', monospace;
+    text-align: center;
+    color: black;
+    position: relative;
+    padding-top: 15px;
+    background: linear-gradient(#495371, #74959a);
+    height: 35px;
+    width: 410px;
+    border-radius: 7px;
+    margin: auto;
+    color:black;
+    opacity: 0;
+}

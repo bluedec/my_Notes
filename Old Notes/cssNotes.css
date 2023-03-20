@@ -1,0 +1,264 @@
+/*  This is a wonderful place for me.
+    Welcome to my notes, where i store the info i find important to remember every time i need it, and that i know i might need in the future.  */
+
+/* Let us begin. */
+/* Take into account that to center an element, one of the things to take into account is the margin. */
+section {
+  margin: 0 auto;
+}
+/* Remember that when there are only two values in the margin, the first one applies to the top and bottom, and the second one applies to the right and left, which means: first vertical, then horizontal. */
+
+/*This is a nice way to make a <a> that would lead you somewhere around the page and do it in a smooth way, so that it won't be annoying for any users :3 */
+* {
+  scroll-behavior: smooth;
+}
+/* Next thing is interesting for the users who have (or have not) a preference for the movement on the page, some, prefer (for medical conditions for example) their pages with !!reduced-movement, and for them we have a @media query for this specifical need  */
+@media (prefers-reduced-motion: no-preference) {
+  selector {
+    font-style:normal;
+  }
+}
+/* As you can see, "prefers-reduced-motion:" is the parameter, and it accepts two possible values, no-preference && reduced */
+
+/* The box-sizing property is really cool, because it lets us transform the divs, and elements in general, way easier, by interpreting the border and padding as part of the element's width and height. This makes things simpler to re-size*/
+html {
+  box-sizing: border-box;
+}
+/* Now, all elements inside the html tag will have their width and height slightly bigger(in text, since they retain the same size, until.. well, you change it lol) */
+
+/* To style all elements that include a certain class, we use something kinda weird, but useful, it looks something like this. */
+span[class~='sr-only'] {
+  font-style: normal;
+}
+/* As you can see, we choose which element we are selecting, then, inside the brackets, we choose the class that the element must include to be selected in order to be given the properties */
+
+/* Today i learned that the property specifier can be used just like a regular selector, what do i mean by this? Take a look at the next example */
+tr[class='total'] th {
+  text-align: center;
+  padding: 0.5rem 0.25rem 0 0.25rem;
+}
+/* Did you see what i did there? The selector is targetting every th element that is within any tr element that has a class of 'total', which means that it can be used in any part of the selector to specify the certain class of an element.
+PD: Remember that the equal sign means that 'total' is the ONLY class the tr element must have in order to be selected, if we used .total instead, every .total class would be selected, even if it had other classes attached to it, just like with tr[class~='total'] where it only should include the class total to be selected. */
+
+/* I don't really know when did i learn that selector can work like this, but it is kind of nice. Take a look. */
+tr.total td {
+  text-align: right;
+  padding: 0 0.25rem;
+}
+/* We are selecting all table data cells(td's) inside of every row that has the 'total' class, notice how the class is sticked to the table row. */
+
+/* About the clip property, it helps define the portion of the element that is visible, it's value must be specified as a rectangle (rect) and the values of all four sides must be, either auto or an specific length. */
+html[class~='chair'] {
+  clip: rect(1px 1px 1px 10px);
+  clip: rect(auto);
+}
+/* Remember in this example the element target selector is read as= "To all html elements with a class of ~="chair" */
+
+/* This is to remember that in order to highlight a certain text, you can use the following: */
+h2 span[class] {
+  font-weight: bold; 
+ }
+ /* Notice something interesting, we didn't really specify which class the span elements inside the h1 tag should have, because we don't really need any! As long as they have any kind of class attached, the code will run.  */
+
+/* FreeCodeCamp didn't really do a great job at explaining these... */
+html {
+  overflow: hidden;
+  white-space: nowrap;
+}
+/* Expecting a better explanation to come from someone... */
+
+/* Since invisible elements still have a weight on the page's flow, we have a way to remove them from the flow by removing it's padding, giving it a negative margin and settings it's position to absolute, as you might suspect, the last one is indeed the most important. */
+html[id~='docMoss'] {
+  margin: -1px;
+  padding: 0;
+  position: absolute;
+}
+/* Please note that this is useful only after you make this element invisible, unless you actively want them to be visible. */
+
+/* The next is an example of the flex property set to a reverse column, which is useful when making a title that makes sense when used with a screen-reader. This example is paired with the htmlNotes.html/28-35 lines. */
+h1 .flex { /* Q: is this targetting all .flex inside h1's? */
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 1.5rem;
+}
+/* Notice the gap property, which is specifically to modify the gap betweeen rows and column elements, this can take two values, but in this specific situacion we are just using one value, applying to both (i think, needs checking) */
+
+/* The following is an example of how to target the first type of a certain element, we will target the the first h1 element with a class of "fncs" */
+h1 .fncs:first-of-type {
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 1.5rem; 
+}
+/* Note: rem takes into account the size of the root font to size the element. So in this case, 1.5rem means 1.5 times the size of the html's font. */ 
+
+/* The same concept can be used to target the last element of a certain type with an almost exact pseudo-selector */
+h1 .fncs:last-of-type {
+  position: absolute;
+  padding: 0;
+  margin: -1;
+}
+/* Look at the next example to understand a concept */
+h1 .fncs span:last-of-type {
+  position: absolute;
+  margin: -1;
+  padding: 0;
+}
+/* The last bit of code will apply to the last SPAN element within the <h1> that has a class */
+
+/* An interesting property to merge borders, which makes the tables look more sleek is the next*/
+table {
+  border-collapse: collapse!important;
+  border-collapse: separate;
+}
+/* The border collapse property will merge the borders of the elements that are next to each other, you can imagine it as if the borders didn't have any margin between them */
+
+/* When positioning an element in an absolute manner, it removes it from the top-down flow from the regular page and allows us to move it relatively to it's container. */
+#back-wall {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* This also allows us to move it with the basic top, bottom, left and right properties. */
+
+/* Selecting all elements is easy, but this won't include the pseudo-elements like ::bofire and ::after, to include them do as follows:  */
+html {
+  box-sizing: border-box; /* see 24-26 */
+}
+*, ::before, ::after { 
+  box-sizing: inherit; /* important use of border-box inheritance */
+}
+/* As you can see, commas are used in the selector to include pseudo-selectors.
+About pseudo-elements:
+I would like to point out is that we tend to forget how the pseudo elements work, so lets go over it one more time. Lets say i have an element, i can make another "element" out of that element without having to actively code it in the html code, with pseudo-elements, which create a son of the element it is using as father, you can create a son that is the first son, and one that is the last son with ::before and ::after, by doing so, you can style those specific elements, this makes making visuals slightly easier once you get the hang of it. Thats all! */
+
+/* Remember the float property, because it's useful. Here is an example */
+#key {
+  position: relative;
+  float: left;
+}
+/* imagine there are many key elements, all on top of each other (since divs are block elements by default). The code behind me will position them in a line, treating them like inline elements. */
+
+/* Imagine a piano element, who has, as a son, an image element. We give the piano a relative positioning, because we don't really want it to be static in the page, we want it to move around and follow the viewport. But we can make the image have an absolute positioning, and make it follow the piano, since it's inside it's parent container. You can utilize absolute positioning to stick elements to it's parents, which is useful. */
+
+/* The overflow property sets how the overflow of words should work, maybe you want to wrap it to the next line or maybe you want it to disappear! */
+
+/* Up next, using variables. Variables let you save a value to reuse it in many other places without, it becomes a color that you can name as you like, or a linear gradiente that you'd like to reuse. As you might imagine, changing the value of the variable will change all the properties that used that variable. Simply change the variable's value and it will be applied to everything else that used the variable. */
+.building1 {
+    --building-color: #aaa202; 
+}
+.first-building {
+    background-color: var(--building-color);
+/* You can use a variable by setting a property's value to the variable with 
+    var(--variable-name); and that's it! */
+}
+
+
+/* When giving a display: flex property to a group of items, one can do the following:  */
+.group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Or flex-start*/
+    /* This will make the flex group of items begin in the end of the Y axis. On the other side, flex-start is the default position. */
+    justify-content: space-evenly; 
+    /* This last one is just a reminder that this exists. lol. */
+}
+/* Since variables are not of use when outside their own scope, it's good practice to create them in :root selector. Like this:   */
+:root {
+    --building-color1: #aa80ff;
+    --building-color2: #66cc99;
+    --building-color3: #cc6699;
+    /* This variables can be used anywhere, that's what's so great about the root! */
+}
+
+/* in CSS, gradients are a way to make a fade between colors, they are applied to the background property of an element, and their sintax looks like the following: */
+
+.building-1-test {
+    /* The type of gradiente is not really important, anyone is fine. */
+    background: linear-gradient(
+        var(--building-color3),
+        var(--window-color3)
+    );
+    /* Notice the coma that is not needed in the last color.
+    Also, the colors do not need to be variables, but they do look dope. */
+}
+/* Another choice on the gradients could be a repeating-linear-gradient in case you want a repeating pattern like in the following. */
+
+.building-2-test {
+    background: repeating-linear-gradient(
+        var(--building-color3) 0%,
+        var(--building-color3) 5%,
+        var(--window-color3) 5%,
+        var(--window-color3) 15%
+        /* This is a gradient that, if not for the repeating pattern, would end at the 15% of the building-2-test. Since it's repeating, it will cover the whole thing. */
+    )
+}
+
+/* When working with a project that may seem kinda hard, it may be a good idea to give this next property to all the elements, just to make it easiear to understand the shapes of the elements. */
+
+* {
+    border: 1px solid black;
+    /* The next one is not mandatory but is makes things easier to adjust */
+    box-sizing: border-box;
+}
+
+/* When making a window, you will probably need a few things to make the div's look like an actual window, for example them being next to each other on the horizontal axis and not the vertical one (both are posible actually, but in this case we choose horizontal) or maybe you need them to be positioned in the middle of it's parent element. Or maybe you need them to be evenly spaced between each other. If any of these things seem important, the next chunk of code might be of use to you.*/
+
+.window-element-test {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+/* When trying to edit all elements at once, the " * " selector is king, but remeber this wont select the ::before and ::after elements, to select them too, just do: */
+
+*, ::before, ::after {
+    margin: 0;
+    padding: 0;
+    /* Removing this two properties is useful to make things easier to edit. */
+}
+
+/* Grid */
+/* Grid is a greate tool to get used to using, i recomend giving yourself time to use it correctly. */
+/* Grids use columns and rows to show the elements, and you have to set the ammount of them you want to use, as well as the sizes they occupy, and where do the elements start and where do they begin. */
+/* We have to give an element the following for it to start using grid: */
+
+main {
+    display: grid;
+    /* Then, we give the grid the ammount of columns.*/
+    /* We can do it the classic way */
+    grid-template-columns: 20px 30px 20px;
+    /* This creates three columns, the middle one being the biggest. But we can also use the repeat method if you want equal columns.*/
+    grid-template-columns: repeat(4, 30px);
+    /* This creates 4 columns, each of them being 30px. */
+    
+    grid-column: 1 / -1;
+    /* Dont know how to use this one yet. */
+
+    grid-auto-flow: column dense;
+    /* grid-auto-flow will create additional rows or columns as needed. the dense value is optional and it uses an algorithm to fill in the holes left by bigger elements with other items, in a non-linear fashion. If the dense value is not present, the algorith used is called "sparse" and it will fill the holes left in a linear fashion. For a better, more in depth and graphical explanation, see grid-auto-flow on MDN Web Docs.*/
+    grid-auto-columns: 1fr;
+    /* maybe you noticed the space between the new elements that where added to new rows when they were needed with grid-auto-flow: column; have a different margin between them than the original ones, that's becouse it is set to auto, but you can change it with grid-auto-columns. */
+    /* You can also create grids inside other grids, but we need another element to show you that, and i don't really feel like it. */  
+    gap: 2rem;
+    /* Gap works for both the gap between the rows and the gap between the columns. It is a shorthand for both of them. If given one value it will apply it to both, but if given two values it applies the first to the rows and the latter to the columns.*/
+    place-items: 2rem 1rem;
+    /* Even tho this is not grid specific, it's not a wrong place to place it.. place..it-ems... ok, place-items is a shorthand property for both the align-items and the justify-items properties, if given one value it will apply it to both, if given two it will apply the first one to align-items and the second one to justify-items.  */
+
+}
+/* If one of your elements does not have grid, don't worry, there is a property that can adjust it in columns easily, without the use of grid. */
+.aLotOfText {
+    column-width: 25rem;
+    /* This will divide the text in columns when posible! */
+}
+
+
+/* Letter spacing is a nice property which i didn't know about. */
+.content {
+    letter-spacing: 0.7px;
+    /* Use it to change the space between letters!  */
+}
+
+
+/* Animations up ahead!>>>> */

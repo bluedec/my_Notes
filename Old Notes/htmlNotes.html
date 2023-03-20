@@ -1,0 +1,94 @@
+<!-- This are my html notes, enjoy them!  -->
+
+
+ <!-- Accesskeys are useful sometimes, they allow us to give an element a key for activation, for example a link that would lead you to somewhere around the page can now be activated without having to use the mouse, with a specific key -->
+<label><a href='example.col' accesskey="i"> This is a link </a></label>
+<!-- Just like that, power at the press of a button! -->
+
+<!-- A word about the viewport and how to set it correctly to help our page be
+  the most "responsive" it can. We use this to adjust the size to fit the screen the device is using, we make the browser use out instructions to adjust the page's dimensions and scaling.
+  It all begins with the meta element, followed by the name we give it,
+  in this case it's a viewport. Next we define it's content='' and we give it a width of the device. content='width=device-width'... pretty simple. -->
+<meta name="viewport" content="width=device-width">
+<!-- but then we need to add the device's scale when the browser loads.
+  we do this by adding ", initial-scale=1.0" after the width. -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- and with that, the zoom when the page loads will be the basic max  resolution of the device. -->
+
+<!-- An important thing to remember is that inside the body, you should add a main element, which is the MAIN part of the body element, as it name stands it's porpouse, only one main should be visible. -->
+<body>
+  <main>
+    <section>
+      <!-- Notice we added a section inside the main, take a guess on why this is good practice. -->
+    </section>
+  </main>
+</body>
+
+<!-- We need screen readers to read the contents of our page, but sometimes this is opposite to the way we show content on the page itself, in this example we will set the name of the company and after it we will add the actual page's reason for existing, a balance sheet in this example. -->
+<main>
+  <section>
+    <span class="flex">
+      <span>BasicOrgName</span> <!--Notice the flex class, this is done in the beginning when you know some group of objects (in this case, spans) will be applied a display: flex property, which in this case is a column-reverse flex-direction to make the Balance Sheet text span be first (which makes more sense visually) and the column will, as the name suggests, display the elements from top to bottom :)-->
+      <span>Balance Sheet</span>
+    </span>
+  </section>
+</main>
+
+
+<!-- OPTIMIZATION FOR MOBILE OR MORE THAN ONE DEVICE -->
+
+<!-- I'm currently building a piano, and the page asks me create two meta tags inside my head element (where the meta tags go).
+One of these meta tags porpouse is optimization for mobile devices and the other one is the one we have already used before, to specify the charset.-->
+<meta name="viewport" width="device-width, initial-scale=1.0">
+<meta charset="utf-8"> 
+<!-- I did not realize the 'optimization for mobile' meant to adjust the width of the page according to the device. -->
+
+<!-- Using absolute positioning smartly. See cssnotes.css line=142 -->
+<!-- #piano has a relative positioning -->
+<div id="piano"> 
+  <img class="logo" href="">
+</div>
+<!-- We can make the logo have an absolute positioning, as it will follow the parent container, the piano, in the position we give it. -->
+
+
+<!-- LAZY IMAGE LOADING -->
+
+<!-- When a user enters the page, there is a way to make images load after the other elements have loaded, so that users with a not-so-great connection don't  have to wait for the pages images to load before looking at it's content. You do so with the following: -->
+
+<img src="link" loading="lazy">
+<!-- lazy elements will load after the non-lazy elements have loaded. -->
+
+
+<!-- SIMPLE PROPERTIES CAN GO IN-LINE -->
+
+<!-- If you want an image to be smaller there is no need to do it on the styles.css where it will just take more precious space in an already crammed environment, better use: -->
+
+<img width="400"> 
+<!-- An away with it. Don't overdo it tho! -->
+
+
+<!-- REFERER HTTP HEADER -->
+
+<!-- The Referer gives information about the previous page a user used before clicking the link, this is useful for analytics and such, but there is a way of omitting this information: -->
+
+<a href="link" rel="noreferer">This will have no information about the last page</a>
+<!-- This will omit the information from the HTTP request. -->
+
+
+<!-- Good Practice with Sections -->
+
+<!-- When having a set of paragraphs, you most likely would want to enclose them inside a section, for readability, and comodity reasons. -->
+<section class="text">
+    <p class="first-paragraph"> This is important apparently.</p>
+    <p>It is!</p>
+    <p>I swear!!</p>
+</section>
+
+
+
+
+
+
+
+
+

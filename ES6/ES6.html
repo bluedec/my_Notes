@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/ES6.css">
+    <script src="./ES6.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <section class="main">
+        <div class="greeting-wrapper">
+            <h1>ES6 Notes</h1>
+            <p>
+                This are my notes about the "ES6" part of the "Javascript Algorithms and Data Structures" course on FreeCodeCamp.com
+            </p>
+            <p>
+                This is my way to practice and have a better understanding of the concepts that are given in the course. So if it helps you while it helps me, we all win! :)
+            </p>
+        </div>
+        
+        <div class="resolve" style="border: 2px blue solid;" onclick="editWrapper()">AAAAAAAAAAAAAAAAAAAAA</div>
+
+        <div class="problem greeting-wrapper" onmouseenter="editWrapper()">
+            <h2 class="problem-title">
+                Compare Scopes of the var and let Keywords
+            </h2>
+            <p>
+                Basically <span class="g">var</span> is only used (if ever used) to declare a variable that is used in the whole project no matter where, unless it's declared inside a function, then it is local... I guess? I don't know, I'll use let anyway for basically all my variables since it's scope is limited to the block or statement where it is declared and that's how it feels more natural most of the times.
+            </p>
+            <p>
+                In one of the examples we are shown that inside a for loop, a statements will run only if the variable i has a value of 2. Then the statement returns the value of i and ends the loop. The interesting part lies in how after this, we log the result of the function call which one would expect to print 2, but we get 3. We get three d we are returning a global variable i, not the variable that is passed into the function at the time the loop runs.
+            </p>
+            <p>
+                In the next example i is a local variable, so the value returned is the one that i is at the time the statement executes.
+            </p>
+            
+        </div>
+        <div class="problem greeting-wrapper">
+            <h2 class="problem-title">Mutate an Array Declared with const</h2>
+            <p>
+                Objects that are declared with <span class="g">const</span> are still able to be <a href="https://developer.mozilla.org/en-US/docs/Glossary/Mutable" class="no-color-link">mutated</a>, but they cannot be reasigned. Trying to re-declare the const (e.g <span class="code">myArray = [1, 2, 3]</span>) will result in an error, but doing <span class="code">pop()</span>, <span class="code">shift()</span> or a specific change to a part of the structure like <span class="code">"myArray[2] = 45"</span> will not result in an error.
+            </p>
+            <p>
+                Only the name and the type of the structure are not mutable when using <span class="g">const</span>.
+            </p>
+            
+    
+            
+        </div>
+        <div class="problem greeting-wrapper">
+            <h2 class="problem-title">Prevent Object Mutation</h2>
+            <p>
+                Here we are introduced a Javascript function that behaves in a kind of misterious way, it works as long as the script is working in strict mode. (What is a script? When are scripts in strict mode?)
+            </p>
+            <p>
+                In case you didn't know the answer to the second one, i'll help you a bit.<br> Strict mode can be activated with the <i>"exact" statement</i> <span class="code">"use strict";</span> on a program or inside a function. It was introduced in ECMAScript5 and allows you to work in a context that is less error prone (by being more strict preventing some actions from being possible).
+            </p>
+            <p>
+                The function <span class="code">Object.freeze()</span> will prevent any changes to the object passed as a parameter to the function from taking place and will result in an error.
+            </p>
+            
+    
+            
+        </div>
+        <div class="problem greeting-wrapper">
+            <h2 class="problem-title">Use Arrow Functions to Write Concise Anonymous Functions</h2>
+            <p>
+                The sintactic sugar for functions that are not meant to be reused again is quite nice to know, and even if it's quite simple to grasp, it can be quite tricky to use at first. I actually found something kinda weird, why does it say that we don't need to <i>name</i> our functions when in the example it <i>is</i> actually naming the function, just in a different way? If you wanted to call <span class="code">const magic = () => new Date();</span> you could do it (e.g <span class="code">console.log(magic());</span>), just like if you had written it the <i>classic</i> way.
+            </p>
+            <p>
+                Maybe i'm thinking about it too much?
+            </p>
+            
+    
+            
+        </div>
+        <div class="problem greeting-wrapper">
+            <h2 class="problem-title">Write Arrow Functions with Parameters</h2>
+            <p>
+                You would obviously need to use parameters when using arrow functions. <br> <span class="code">const multiply = (num, times) => num * times;</span>
+            </p>
+            
+    
+            
+        </div>
+        <div class="problem greeting-wrapper">
+            <h2 class="problem-title">Set Default Parameters for Your Functions</h2>
+            <p>
+                It's a nice touch to give functions default parameters, you can do so with <br><span class="code">const userAge = (age = "not specified") => "The age is " + age;</span><br>This will either return the age of the user or the text "The age is not specified".
+            </p>
+            
+    
+            
+        </div>
+        <div class="problem greeting-wrapper">
+            <h2 class="problem-title">Use the Rest Parameter with Function Parameters</h2>
+            <p>
+                Creating flexible functions is important, that's why we'll use three dots behind the variable to denote that there can be many instances of that variable... But i must say I had quite the trouble understanding this one, the main problem was not knowing how the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce" class="no-color-link">reduce</a> method works. But it was pretty simple, it works on an array and tries to (as the name implies) reduce the numbers inside to a unique value, but the sintax was kinda complicated at first, in fact I still have my doubts about it.
+            </p>
+            <p>
+                Basically you need to call the reduce method on the array you want to reduce. <br>It is important to note that you can call directly on the arguments passed since they will be an array of elements(e.g <span class="code"> const sum = (...args) => args.reduce()</span>). then you have to pass the parameters that the reduce method needs, which are the <i>initialValue</i> (which is optional), the <i>accumulator</i> (the variable that will store all the sums made, which defaults to args[0]), the <i>currentValue</i> (the current element, which defaults to args[1]).
+            </p>
+            
+    
+            
+        </div>
+        <div class="problem greeting-wrapper">
+            <h2 class="problem-title">Use the Spread Operator to Evaluate Arrays In-Place</h2>
+            <p>
+                Spread operator used to copy the contents of another array. <span class="code">arr2 = [...arr1]</span>
+            </p>
+            
+    
+            
+        </div>
+        <div class="problem greeting-wrapper">
+            <h2 class="problem-title">Use Destructuring Assignment to Extract Values from Objects</h2>
+            <p>
+                Destructiring an object is a quicker way to assign the value in a field of an object to a variable, these variables can be called the same as the field, making it easier to assign: <br>e.g <span class="code">const { occupation, gender } = Workforce;</span><br>
+            </p>
+            
+    
+            
+        </div>
+        <div class="problem greeting-wrapper">
+            <h2 class="problem-title">Use Destructuring Assignment to Assign Variables from Objects</h2>
+            <p>
+                Variables can be named:<br><span class="code">const { occupation: userOccupation, gender: userGender } = Workforce;</span>
+            </p>
+            <p>
+                Here, userOccupation and userGender are the names of the variables created and assigned with the value of their corresponding object field.  
+            </p>
+            
+    
+            
+        </div>
+        <div class="problem greeting-wrapper">
+            <h2 class="problem-title">Use Destructuring Assignment to Assign Variables from Nested Objects</h2>
+            <p>
+                This one was kinda hard for me at first, but once it clicked it felt good.<br>Basically you can use destructuring in an object that is itself inside another object. Let's suppouse that we have an object called VEHICLES that has fields that are objects themselves, these fields are going to be cars and bikes which have fields for the models of the cars and bikes that they have in store, it would look something like this.</p>
+            <pre>
+            <code>
+                <i>const VEHICLES = {</i>
+                <i>     cars: { ford: $150K, mitsubishi: $200K },</i>
+                <i>     bikes: { honda: [$30K, $25K, $16K], mitsubishi: $23K }</i>    
+                <i> };</i>
+            </code>
+            </pre>
+            <p>
+                Now we assign them as taught:<br><span class="code">const { cars: { ford: fordCar, mitsubishi: mitsuCar } } = VEHICLES;</span>
+            </p>
+            <p>
+                The variables fordCar and mitsuCar have been created and both have the respective prices... but how do we access one of the elements in the array of the honda bikes? That's a question I have till this very day.
+            </p>
+            
+    
+            
+        </div>
+        <div class="problem greeting-wrapper">
+            <h2 class="problem-title">Use Destructuring Assignment to Assign Variables from Arrays</h2>
+            <p>
+                We can also destructure elements from a list, and differently from using the Spread Operator(...arr1), which doesn't allow us to name the variables, d they are <i>spread</i> inside an array, when we use the destructuring method we can do exactly that! :)
+            </p>
+            <pre>
+            <code>
+                <i> const [ theFirst,, theThird ] = [1, 2, 3];</i>
+            </code>
+            </pre>
+            <p><span class="code">console.log()</span>ing will show that theFirst and his brother theThird will have their corresponding values: 1 and 3, while the second one will be omitted since we used commas to avoid one value. Neat! </p>
+            
+    
+            
+        </div>
+        <div class="problem greeting-wrapper">
+            <h2 class="problem-title">Destructuring via rest elements</h2>
+            <p>
+                Suppouse we have an array and we want to create some variables to hold specific values like the first and the third one in the last example, but we also want to store the rest of the array in a new array with a new name.<br>
+                We can do that easily.
+            </p>
+            <p><span class="code">const [ a, b, ...arr ] = [1, 2, 3, 4, 5, 6];</span></p>
+            <p>Logging will show that <span class="g">a = 1</span>, <span class="g">b = 2</span>, and <span class="g">arr = [3, 4, 5, 6]</span>.. but something is off... right! We wanted the first and the third elements.</p>
+            <p><span class="code">const [ a,, b, ...arr ] = [1, 2, 3, 4, 5, 6];</span> should do the trick.</p>
+            <p>Now we continue.</p>
+            
+    
+            
+        </div>
+        <div class="problem greeting-wrapper">
+            <h2 class="problem-title">Use Destructuring Assignment to Pass an Object as a Function's Parameters</h2>
+            <p>
+                We can use Destructuring Assignment inside the parameters of a function to automatically declare variables from the passed object to use inside the function. Slick and elegant!
+            </p>
+            <p><span class="code">const car_parts = ({engine, battery, tires, lights}) => { }</span></p>
+            <p>We are not naming the variable that is gonna hold the object and then declaring variables for the fields we want from the object inside the function, we are rather declaring the variables for the object's fields already in the parameters!</p>
+            
+    
+            
+        </div>
+        <div class="problem greeting-wrapper">
+            <h2 class="problem-title">Create Strings using Template Literals</h2>
+            <p>
+                This is a feature that I thought was really cool when I was writing code in Rust. And that I found also to be in Python. <br> 
+                In JS they made it a bit harder to use because you need to use backsticks and not quotes (Yes, I think it makes it harder, I'm not the brightest tool in the shed mmmmokay?). Template Literals allow us the use variables and object fields inside strings.<br>
+                The formula goes like this:<br>
+            </p>
+            <p>
+                <pre>
+                <code>
+                <i>const Bobbie = {</i>
+                <i>    age: 16,</i>
+                <i>    gamer: True,</i>    
+                <i>    eyes: "Brown",</i>
+                <i>}</i>
+                
+                const eyes = `Bobbie has <span class="g">$</span>{Bobbie.eyes.toLowerCase()} eyes`;
+                console.log(eyes);</p>
+                </code>
+                </pre>        
+    
+            
+        </div>
+        <div class="problem greeting-wrapper">
+            <h2 class="problem-title">Write Concise Object Literal Declarations Using Object Property Shorthand</h2>
+            <p>
+                Whenever we can save time, we should, as long as the code remains readable. When defining object literals, as long as the parameters passed have the same name as the object fields that need to be assigned, we can avoid repetition and make things easier, so instead of doing <span class="code">return { x: x, y: y };</span>, simply do <span class="code">return { x, y };</span>.
+            </p>
+            <p>Clarification: We are using the example given in the activity at FreeCodeCamp, which has a function that receives x and y as parameters and returns an object literal containing x and y, okay? okay. Let's continue.</p>
+        </div>
+        <div class="problem greeting-wrapper">
+            <h2 class="problem-title"></h2>
+            <p>
+                
+            </p>
+            <p>
+
+            </p>
+    </section>
+
+</body>
+</html>
